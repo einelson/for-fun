@@ -1,7 +1,7 @@
 '''
 The purpose of this program is to test the efficiency of multithreading
-This program will time how long it takes to run 2 for loops counting from 1-1000 in order and compare it with
-the results of running 2 for loops counting to 1000 while multithreading
+This program will time how long it takes to run 2 for loops adding 1+x 1000000 in order and compare it with
+the results of running 2 for loops counting adding 1+x 1000000 times while multithreading
 '''
 
 # import libraries
@@ -11,10 +11,12 @@ import threading
 
 # test time of 2 for loops
 start_time = time.time()
-for x in range(10000):
-    print(x)
-for x in range(10000):
-    print(x)
+y=0
+for x in range(1000000):
+    y=y+x
+y=0
+for x in range(1000000):
+    y=y+x
 
 regular= 'Regular: ' + str(time.time() - start_time)
 
@@ -22,12 +24,14 @@ regular= 'Regular: ' + str(time.time() - start_time)
 
 # test with threading
 def for_one():
-    for x in range(10000):
-        print(x)
+    y=0
+    for x in range(1000000):
+        y=y+x
 
 def for_two():
-    for x in range(10000):
-        print(x)
+    y=0
+    for x in range(1000000):
+        y=y+x
 
 start_time = time.time()
 t1 = threading.Thread(target=for_one) 
